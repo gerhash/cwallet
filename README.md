@@ -1,6 +1,4 @@
-
-![Logo](https://github.com/gerhash/wallet-django/assets/62940515/9a36cee2-9c81-489c-95ab-a652fd869b4b)
-
+<img src="https://github.com/gerhash/wallet-django/assets/62940515/9a36cee2-9c81-489c-95ab-a652fd869b4b" alt="Logo" width="200"/>
 
 
 # CWallet
