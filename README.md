@@ -3,7 +3,7 @@
 
 # CWallet
 
-<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,py,django" alt="Skills" />
+<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,py,django,mysql" alt="Skills" />
 
 CWallet is the basic template for creating a user-controlled electronic exchange currency.
 It consists of managing electronic money (not existing on blockchains) and allowing it to be exchanged, bought, received, withdrawn, earned using invitation codes.
