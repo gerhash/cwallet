@@ -71,12 +71,14 @@ They can be of 5 types, and they all contain quantity and date and time:
   ![Screenshot 2024-06-12 114022](https://github.com/gerhash/wallet-django/assets/62940515/09345e57-6b7f-41d5-a7b3-52fa0f8906f0)
 
 Going down we have a dashboard that shows us the current value of the coin, with a graph (using Chart.js) that shows us its trend over time
+  
   ![Screenshot 2024-06-12 114030](https://github.com/gerhash/wallet-django/assets/62940515/63d29284-eed5-4c76-a14c-87ac9aeaf0b4)
 
 
 #### Account
 
 ![Screenshot 2024-06-12 114039](https://github.com/gerhash/wallet-django/assets/62940515/62f68c57-22d6-453f-928a-606fa527ff75)
+
 In this section we have the avatar image at the top with username and other personal information
 If the document verification has not been carried out, there is a button that reminds us to do it.
 
