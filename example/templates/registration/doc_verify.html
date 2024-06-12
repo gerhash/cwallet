@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% block title%}Verify Docs{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center gap-1">
+    <div class="w-md-75 w-sm-75 h-100 d-flex flex-column justify-content-center text-center rounded-3 py-10 px-8">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                {% for field in form %}
+                <div class="col-md-2 col-lg-2 mb-3">
+                    {{ field|as_crispy_field }}
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-success mt-4">Send</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

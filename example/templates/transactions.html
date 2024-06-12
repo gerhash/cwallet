@@ -1,0 +1,30 @@
+{% block content %}
+<div class="container mt-4 ">
+    <div class="trans_box border border-primary border-4 d-flex flex-column p-3 gap-2">
+       {% for transaction in transactions %}
+            {% if transaction.type == "IR" %}
+                {% if transaction.sender == user.username %}
+                       {% include 'transactions/send.html' with trans=transaction coin=coin  %}
+                {% elif transaction.receiver == user.username %}
+                      {% include 'transactions/receive.html' with trans=transaction coin=coin  %}
+                {% endif %}
+            {% elif transaction.type == "BUY" %}
+                      {% include 'transactions/buy.html' with trans=transaction coin=coin  %}
+            {% elif transaction.type == "CASHOUT" %}
+                      {% include 'transactions/withdraw.html' with trans=transaction coin=coin  %}
+             {% elif transaction.type == "BONUS" %}
+                      {% include 'transactions/bonus.html' with trans=transaction coin=coin  %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<style>
+    .trans_box {
+        width:auto;
+        height:14rem;
+
+        overflow-y: auto;
+        }
+</style>
+
+{% endblock %}

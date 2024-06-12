@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   {{user.username}}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-center gap-4 my-8">
+        <div class="col-md-6 user_datas d-flex gap-8">
+            <div class="border border-primary border-4 rounded-4">
+                <img src="../../../media/{{user.avatar_img}}" class="avatar-im" />
+            </div>
+            <div class="d-flex flex-column gap-1">
+                <div class="fs-2 fw-bold">{{user.username}}</div>
+                <div class="fs-3">{{user.first_name}} {{user.last_name}}</div>
+                <div class="fs-4">{{user.email}}</div>
+                <div class="fs-4">{{user.cell}}</div>
+            </div>
+        </div>
+        
+        <div class=" col-md-6 d-flex justify-content-center rounded-4 gap-3 ">
+            {% if user.is_docverified %}
+        
+            {% else %}
+            <a href="/verify-docs" class="d-flex no-underline text-decoration-none">
+                <div class="bg-success fw-bold text-white rounded-3 p-4" >
+                    Verify Now
+                </div>
+            </a>
+             {% endif %}
+        </div>
+      
+        <div class="col-md-6 bal d-flex flex-column p-4 bg-primary rounded-4 gap-3 p-4">
+            <div class="bg-white text-center rounded-3 py-4">
+                <p>{{user.balance}} {{coin.short}}</p>
+                <h1>{{bal}} €</h1>
+            </div>
+
+        </div>
+        <div class="col-md-6 score d-flex flex-column p-4 bg-primary rounded-4 gap-3">
+            <div class="d-flex flex-column align-items-center bg-white rounded-3 p-3">
+                <p>{{coin.name}}</p>
+                <h1 class="">1 {{coin.short}} = {{coin.value}} €</h1>
+            </div>
+            <div class="d-flex gap-2 justify-content-between ">
+                <div>
+                    <p class="fs-5 fw-bolder text-white mt-auto">Ranking: <span class="bg-success p-1 px-2 rounded-3 text-white fw-regular">{{user.score}}</span></p>
+                    <p class="fs-5 fw-bolder text-white mt-auto">Invited Friends: <span class="bg-danger p-1 px-2 rounded-3 text-white fw-regular">{{user.rank}}</span></p>
+                    {% if user.invite_code %}<p class="fw-semibold text-white ">Invited by <span class="text-warning">{{user.invite_code}}</span></p>{% endif %}
+                </div>
+                <div class="bg-warning py-2 px-3 rounded-3 d-flex flex-column justify-content-center align-items-center">
+                    <p class="fs-5 fw-bolder">{{user.code}}</p>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+
+
+
+<style>
+    .avatar {
+        height:12vw;
+        width:12vw;
+    }
+    .avatar-im {
+    width: 150px; /* Puoi cambiare questa dimensione in base alle tue esigenze */
+    height: 150px; /* Mantieni le proporzioni dell'immagine */
+    object-fit: cover; /* Assicura che l'immagine si adatti alla dimensione definita senza distorcersi */
+    border-radius: 50%; /* Se vuoi un'immagine rotonda */
+}
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+    .no-underline {
+        text-decoration: none;
+    }
+
+    .user_datas .border {
+        width: 160px; /* Imposta la larghezza desiderata del div dell'immagine */
+        height: 160px; /* Imposta l'altezza desiderata del div dell'immagine */
+        overflow: hidden; /* Nasconde il contenuto che supera le dimensioni del div */
+    }
+</style>
+{% endblock %}
+
+

@@ -1,0 +1,16 @@
+
+{% block content %}
+<div class="container mt-4 d-flex justify-content-center px-2">
+    <div class="d-flex justify-content-between gap-1 text-white ">
+        {% include 'components/action_button.html' with action="Invia" path="/send" icon="arrow-bar-up" %}
+        {% include 'components/action_button.html' with action="Ricevi" path="/receive"  icon="box-arrow-in-down-left"  %}
+        {% include 'components/action_button.html' with action="Compra" path="/buy"  icon="cart-plus"  %}
+        {% include 'components/action_button.html' with action="Preleva" path="/withdraw"  icon="cash-coin"  %}
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

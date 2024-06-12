@@ -1,0 +1,28 @@
+
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between my-2 ">
+       <!-- <div class="bg-warning p-2 px-4 rounded-2 d-flex justify-content-center align-items-center ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gift-fill" viewBox="0 0 16 16">
+              <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A3 3 0 0 1 3 2.506zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43zM9 3h2.932l.023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9z"/>
+            </svg>
+        </div>-->
+        <div class="bg-warning py-2 px-3 rounded-2 d-flex flex-column justify-content-center align-items-center ml-4">
+           <p class="fs-5 fw-bolder">{{user.code}}</p>
+        </div>
+    </div>
+    <div class="bg-primary p-4 rounded-4 d-flex flex-column align-items-center">
+        <h2>{{coin.name}}</h2>
+        <div class="d-flex gap-2 justify-content-center"><h1 class="text-white text-xl bal">{{bal}} €</h1> </div>
+        <p class="justify-self-center fw-bolder">{{user.balance}} {{coin.short}}</p>
+    </div>
+
+</div>
+
+<style>
+    .bal{
+        font-size: 3rem;
+    }
+</style>
+{% endblock %}

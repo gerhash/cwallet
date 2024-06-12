@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center align-items-center gap-1 text-white">
+  <div class=" w-md-75 w-sm-75 h-100 bg-primary d-flex flex-column justify-content-center text-center rounded-3 py-10 px-8">
+
+  {% if messages %}
+    <ul class="alert alert-danger" role="alert">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+    <h2 class="mb-4">Balance: {{user.balance}} {{coin.short}} <span class="fs-5">{{ bal }} €</span></h2>
+    <h2>Preleva: <span id="value-display">0.0</span> | <span id="value-money">0.0</span>€</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type="submit">Cashout</button>
+    </form>
+    </div>
+
+</div>
+<script>
+  const testoInput = document.getElementById('id_quantity_req');
+  const h1 = document.getElementById('value-display');
+  const vmoney = document.getElementById('value-money');
+  const userBalance = parseFloat({{ user.balance }}); // Assuming user.balance is a number
+  const coinValue = parseFloat({{ coin.value }}); // Assuming coin.value is a number
+
+  document.getElementById('id_quantity_req').value = userBalance.toFixed(2); // Limit to two decimal places
+  h1.textContent = userBalance.toFixed(2); // Limit to two decimal places
+  vmoney.textContent = (userBalance * coinValue).toFixed(2); // Limit to two decimal places
+
+  testoInput.addEventListener('input', updateDisplay);
+
+  function updateDisplay() {
+    const nuovoValore = Math.min(parseFloat(testoInput.value), userBalance); // Ensure valid number and limit to userBalance
+
+    // Check if input is negative
+    if (nuovoValore < 0) {
+      testoInput.value = 0; // Reset input to 0
+      vmoney.textContent = (0 * coinValue).toFixed(2); // Limit to two decimal places
+      h1.textContent = 0; // Reset h1 text content to 0
+    } else {
+      const nuovoTesto = nuovoValore.toFixed(2); // Limit to two decimal places
+      testoInput.value = nuovoTesto; // Update input value directly
+      vmoney.textContent = (nuovoValore * coinValue).toFixed(2); // Limit to two decimal places
+      h1.textContent = nuovoTesto; // Update h1 text content
+    }
+  }
+</script>
+
+
+
+{% endblock %}

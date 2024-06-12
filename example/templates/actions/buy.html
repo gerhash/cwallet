@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $("#value").on("input", function() {
+                $("#value-display").text($(this).val());
+            });
+        });
+    </script>
+    <div class="container d-flex flex-column justify-content-center align-items-center gap-1">
+      <div class=" w-md-75 w-sm-75 h-100 bg-primary d-flex flex-column justify-content-center text-center rounded-3 py-10 px-8">
+  {% if messages %}
+    <ul class="alert alert-danger" role="alert">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+
+    <h1 class="fs-1 fw-semibold text-white mb-5"><span id="value-display">0.0 </span> €</h1>
+    <form class="d-flex flex-column align-items-center gap-4 " method="post">
+        {% csrf_token %}
+        <div class="text-white">
+          {{ form.as_p }}
+
+
+        </div>
+        <button type="submit" class="btn btn-success">Buy</button>
+    </form>
+
+      </div>
+    </div>
+<script>
+        const testoInput = document.getElementById('id_value');
+        const h1 = document.getElementById('value-display');
+
+        testoInput.addEventListener('input', aggiornaH1);
+
+        function aggiornaH1() {
+    const nuovoValore = parseFloat(testoInput.value) * parseFloat({{ coin.value }});
+    const nuovoTesto = nuovoValore.toFixed(2); // Limita a massimo due cifre decimali
+    h1.textContent = nuovoTesto;
+}
+
+</script>
+{% endblock %}

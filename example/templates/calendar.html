@@ -1,0 +1,123 @@
+
+
+{% block content %}
+<div class="container mt-1">
+    <div class=" px-4 rounded-4">
+        <div>
+          <button onClick="filterData('5d')">5d</button>
+          <button onClick="filterData('1m')">1m</button>
+          <button onClick="filterData('6m')">6m</button>
+          <button onClick="filterData('1y')">1y</button>
+          <button onClick="filterData('all')">ALL</button>
+      </div>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+</div>
+<script>
+  const datesx = {{ dates|safe }};
+  const valuesx = {{ values|safe }}; 
+
+  let originalDates = [...datesx];
+  let originalValues = [...valuesx];
+let unit_handler = 'year'
+
+
+
+function filterData(range) {
+    const now = new Date();
+    let startDate;
+
+    switch (range) {
+        case '5d':
+            startDate = new Date(now.setDate(now.getDate() - 5));
+            unit_handler = 'day'
+            break;
+        case '1m':
+            startDate = new Date(now.setMonth(now.getMonth() - 1));
+            unit_handler = 'day'
+            break;
+        case '6m':
+            startDate = new Date(now.setMonth(now.getMonth() - 6));
+            unit_handler = 'month'
+            break;
+        case '1y':
+            startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+            unit_handler = 'month'
+            break;
+        default:
+            startDate = new Date('1970-01-01'); // or any earliest date
+            unit_handler = 'year'
+            break;
+    }
+     
+    const filteredDates = originalDates.filter(date => new Date(date) >= startDate);
+    const filteredValues = originalValues.slice(originalDates.length - filteredDates.length);
+
+
+
+
+    updateChart(filteredDates, filteredValues);
+}
+
+function updateChart(filteredDates, filteredValues) {
+    myChart.data.datasets[0].data = filteredDates.map((date, index) => ({ x: date, y: filteredValues[index] }));
+    myChart.options.scales.x.time.unit = unit_handler;
+    myChart.update();
+}
+
+
+window.filterData = filterData;
+
+
+
+
+
+  // Setup
+  let data = {
+    datasets: [{
+      label: 'Coin Value',
+      data: datesx.map((date, index) => ({ x: date, y: valuesx[index] })),
+      borderWidth: 2
+    }]
+  }
+
+  // Config
+  const config = {
+    type: 'line',
+    data,
+    options: {
+      animations: {
+        tension: {
+          duration: 1000,
+          easing: 'easeOutQuart',
+          from: 1,
+          to: 0,
+          loop: true
+        }
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            unit: unit_handler
+          }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 40 // Set step size for Y axis
+          }
+        }
+      }
+    }
+  }
+
+  // Render
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+</script>
+
+{% endblock %}

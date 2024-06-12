@@ -1,0 +1,32 @@
+{% block content %}
+
+{% load bootstrap_icons %}
+<div>
+        <a href="{{path}}" class="col-3 box bg-primary no-hover ">
+              {% bs_icon icon size='2.4rem'  extra_classes="bi-valign-middle"%}
+
+         </a>
+            <p class="text-primary text-center">{{action}}</p>
+</div>
+
+
+
+<style>
+    .box {
+    padding: 2rem;
+    text-decoration: none;
+    color: white;
+    border-radius: 4em;
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center;     /* Centra verticalmente */
+    width:auto;
+    height:3rem;
+}
+.no-hover:hover {
+        color: inherit; /* Mantieni il colore del testo originale */
+        text-decoration: none; /* Rimuovi la sottolineatura */
+    }
+</style>
+
+{% endblock %}

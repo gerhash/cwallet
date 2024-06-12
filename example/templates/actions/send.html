@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<div class="container d-flex flex-column justify-content-center align-items-center gap-1">
+
+
+
+  <div class=" w-md-75 w-sm-75 h-100 bg-primary d-flex flex-column justify-content-center text-center rounded-3 py-10 px-8">
+    <div class="px-10 text-decoration-none">
+      {% if messages %}
+      <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <p class="fs-1 fw-semibold text-white">Saldo: {{user_balance}} | {{bal}} €</p>
+
+    <form class="d-flex flex-column align-items-center gap-4 " method="post" onsubmit="return validateInput()">
+      {% csrf_token %}
+      <div>
+        {{ form|crispy }}
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <p id="value_display"></p>
+        <button type="submit" class="btn btn-success">Send Coin</button>
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+
+
+<script>
+  function validateInput() {
+    // Assuming the Crispy Forms generated input field has an ID 'id_value'
+    const valueInput = document.getElementById('id_value').value;
+    if (valueInput < 0) {
+      alert('Il valore non può essere negativo.');
+      return false;
+    }
+    return true;
+  }
+</script>
+
+
+<style>
+  .form-label {
+    color: white !important;
+  }
+</style>
+
+<script>
+
+</script>
+{% endblock %}
