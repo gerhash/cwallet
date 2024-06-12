@@ -48,7 +48,6 @@ Login and Register page managed with django including encryption, when registeri
 #### Dashboard
 
 At the top left there is a yellow box with the user's invitation code inside, by sharing it it will be possible to receive bonuses and rise in rank (to be implemented)
-
 Subsequently there is a screen that includes the name of the coin and the actual balance of the user, both in euros (or chosen currency) and in the value of the coin
 
 4 action buttons are present continuing below:
@@ -56,6 +55,10 @@ Subsequently there is a screen that includes the name of the coin and the actual
 - Receive: Sharing your username you can receive coins
 - Buy: You can purchase a desired amount of the coin, with the possibility of entering a bonus code
 - Withdraw: Withdraw your money directly to an IBAN, but you need to verify the documents first
+
+![Screenshot 2024-06-12 113916](https://github.com/gerhash/wallet-django/assets/62940515/9f77a547-7e6e-4cca-a4c3-428671e4c9c9)
+
+
 
 We now have a bread that contains transaction history.
 They can be of 5 types, and they all contain quantity and date and time:
