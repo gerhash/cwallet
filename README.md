@@ -1,106 +1,83 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
 
-# Django + Vercel
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
-This example shows how to use Django 4 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
 
-## Demo
+# CWallet
 
-https://django-template.vercel.app/
+CWallet is the basic template for creating a user-controlled electronic exchange currency.
+It consists of managing electronic money (not existing on blockchains) and allowing it to be exchanged, bought, received, withdrawn, earned using invitation codes.
 
-## How it Works
+The use is purely for research purposes,
+this project was created by me to get familiar with DJANGO and MYSQL.
+I assume no responsibility for improper use of this repository.
 
-Our Django application, `example` is configured as an installed application in `api/settings.py`:
+-----
 
-```python
-# api/settings.py
-INSTALLED_APPS = [
-    # ...
-    'example',
-]
+The Ponzi scheme is a fraudulent economic sales model created by Charles Ponzi, which promises strong profits to the first investors, to the detriment of new "investors", who in turn are victims of the scam.
+## Installation
+
+At this moment it is only possible to use it locally as there is no configuration with PostgreSQL remotely.
+
+
+## 1. Clone Repository
+
+```javascript
+git clone https://github.com/gerhash/wallet-django.git
 ```
 
-We allow "\*.vercel.app" subdomains in `ALLOWED_HOSTS`, in addition to 127.0.0.1:
+## 2. Install Dependencies
 
-```python
-# api/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+```javascript
+pip install -r requirements.txt
 ```
 
-The `wsgi` module must use a public variable named `app` to expose the WSGI application:
+## 3. Run Server
 
-```python
-# api/wsgi.py
-app = get_wsgi_application()
-```
-
-The corresponding `WSGI_APPLICATION` setting is configured to use the `app` variable from the `api.wsgi` module:
-
-```python
-# api/settings.py
-WSGI_APPLICATION = 'api.wsgi.app'
-```
-
-There is a single view which renders the current time in `example/views.py`:
-
-```python
-# example/views.py
-from datetime import datetime
-
-from django.http import HttpResponse
-
-
-def index(request):
-    now = datetime.now()
-    html = f'''
-    <html>
-        <body>
-            <h1>Hello from Vercel!</h1>
-            <p>The current time is { now }.</p>
-        </body>
-    </html>
-    '''
-    return HttpResponse(html)
-```
-
-This view is exposed a URL through `example/urls.py`:
-
-```python
-# example/urls.py
-from django.urls import path
-
-from example.views import index
-
-
-urlpatterns = [
-    path('', index),
-]
-```
-
-Finally, it's made accessible to the Django server inside `api/urls.py`:
-
-```python
-# api/urls.py
-from django.urls import path, include
-
-urlpatterns = [
-    ...
-    path('', include('example.urls')),
-]
-```
-
-This example uses the Web Server Gateway Interface (WSGI) with Django to enable handling requests on Vercel with Serverless Functions.
-
-## Running Locally
-
-```bash
+```javascript
 python manage.py runserver
 ```
+## demo
+## v0.1 Alpha
 
-Your Django application is now available at `http://localhost:8000`.
+First version still under development, many functions to be implemented and the UI to be improved
 
-## One-Click Deploy
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+#### Auth&Login
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+Login and Register page managed with django including encryption, when registering an invitation code is asked (optional), if entered a bonus is given to both users, both the invited person and the person who shared the code
+
+#### Dashboard
+
+At the top left there is a yellow box with the user's invitation code inside, by sharing it it will be possible to receive bonuses and rise in rank (to be implemented)
+
+Subsequently there is a screen that includes the name of the coin and the actual balance of the user, both in euros (or chosen currency) and in the value of the coin
+
+4 action buttons are present continuing below:
+- Send: Allows you to send an amount of money to another user via your username
+- Receive: Sharing your username you can receive coins
+- Buy: You can purchase a desired amount of the coin, with the possibility of entering a bonus code
+- Withdraw: Withdraw your money directly to an IBAN, but you need to verify the documents first
+
+We now have a bread that contains transaction history.
+They can be of 5 types, and they all contain quantity and date and time:
+
+- Sent: Coin sent to user X 
+- Received: Coin received from user X 
+- Buy: Coin purchased
+- Cashout: Coin Withdrawn
+- Bonus: Coin Earned with bonus
+
+Going down we have a dashboard that shows us the current value of the coin, with a graph (using Chart.js) that shows us its trend over time
+
+
+#### Account
+
+In this section we have the avatar image at the top with username and other personal information
+
+If the document verification has not been carried out, there is a button that reminds us to do it.
+
+We have the wallet with the user's balance and then a screen that reminds us of the price of the coin, the invitation code and the ranking statistics and the number of people invited by us.
+In the future it will be implemented by ensuring that rewards are obtained based on rank and people invited
+## 🛠 Skills
+HTML, CSS, JavaScript, Python, Django, MySQL, Bootstrap
+
