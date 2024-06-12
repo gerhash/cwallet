@@ -1,7 +1,9 @@
+
 <img src="https://github.com/gerhash/wallet-django/assets/62940515/9a36cee2-9c81-489c-95ab-a652fd869b4b" alt="Logo" width="200"/>
 
-
 # CWallet
+
+<img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,py,django" alt="Skills" />
 
 CWallet is the basic template for creating a user-controlled electronic exchange currency.
 It consists of managing electronic money (not existing on blockchains) and allowing it to be exchanged, bought, received, withdrawn, earned using invitation codes.
