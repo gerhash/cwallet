@@ -84,5 +84,146 @@ If the document verification has not been carried out, there is a button that re
 
 We have the wallet with the user's balance and then a screen that reminds us of the price of the coin, the invitation code and the ranking statistics and the number of people invited by us.
 In the future it will be implemented by ensuring that rewards are obtained based on rank and people invited
+
 ## Database Logic
+
+#### **Coin**
+
+**id** | Coin primary Key id
+
+**name** | Coin Name
+
+**short** | Coin Shorter Name
+
+**value** | Coin Value
+
+#### **CustomUser**
+
+**id** | User primary Key id
+
+**username** | Username
+
+**password** | Password
+ 
+**email** | Email
+
+**first_name** | First Name
+
+**last_name** | Last Name
+
+**cell** | Mobile Number
+
+**balance** | User Balance (coin)
+
+**code** | Share this code for receive Bonus
+
+**invite_code** | The code you used for subscribe
+
+**rank** | Your Ranking level, Gain badges and prizes
+
+**score** | Invited Friends
+
+**avatar_img** | Path to avatar_img
+
+**dob** | Date of Birth
+
+**city_b** | Birth City
+
+**prov_b** | Birth Prov
+
+**state_b** | Birth State
+
+**addr_r** | Residence Address
+
+**city_r** | Residence City
+
+**prov_r** | Residence Prov
+
+**state_r** | Residence State
+
+**doc_n** | Doc Number
+
+**doc_type** | Doc Type (CIE, Driver License, Passport)
+
+**doc_location** | Where the document was created (municipality, DMV etc...)
+
+**doc_city** | City where the document was created
+
+**doc_state** | State where the document was created
+
+**doc_bor** | Creation Date of document
+
+**doc_exp** | Expiry Date of document
+
+**doc_fr** | Path to Front Doc Image
+
+**doc_rt** | Path to Retro Doc Image
+
+**doc_selfie** | Path to Selfie  Image
+
+**is_docverified** | Boolean too check verify
+
+**last_login** | Last Login Date
+  
+**date_joined** | Account Creation Date
+
+**is_superuser** | Full Permission 
+
+**is_staff** | Staff Permission
+
+
+#### **Calendar_record**
+
+Track the prize change of the coin
+
+**id** | Record primary Key id
+
+**value** | Coin Value
+
+**date** | Record Date
+
+**coin_id** | Coind_id
+
+#### **Transactions**
+
+**id** | Transaction primary Key id
+
+**type** | Type of transaction: BUY, SENT, RECEIVED, CASHOUT, BONUS
+
+**tov** | Coin value at the transaction Moment (in FIAT)
+
+**sender** | Sender username
+
+**receiver** | Receiver username
+
+**date** | Transaction Date
+
+#### **Withdraw Req**
+
+Request of Withdraw 
+
+**id** | Request primary Key id
+
+**quantity_req** | Amount of cashout
+
+**iban** | Bank Details of the cashout 
+
+**user** | User requested Withdraw
+
+**date** | Request Date
+
+#### **Bonus Codes**
+
+**id** | Bonus primary Key id
+
+**code** | Code String
+
+**value** | Bonus Value
+
+**creation_date** | Creation Date
+
+**expiry_date** | Expiry Date
+
+![Screenshot 2024-06-12 120431](https://github.com/gerhash/wallet-django/assets/62940515/154333e2-6379-4c34-a3c8-e5593fcdd22e)
+
 
