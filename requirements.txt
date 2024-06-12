@@ -7,3 +7,4 @@ sqlparse==0.4.4
 tzdata==2024.1
 django-formtools==2.4.1
 django-bootstrap-icons==0.8.7
+pytz==2024.1
