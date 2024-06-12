@@ -59,7 +59,6 @@ Subsequently there is a screen that includes the name of the coin and the actual
 ![Screenshot 2024-06-12 113916](https://github.com/gerhash/wallet-django/assets/62940515/9f77a547-7e6e-4cca-a4c3-428671e4c9c9)
 
 
-
 We now have a bread that contains transaction history.
 They can be of 5 types, and they all contain quantity and date and time:
 
@@ -67,15 +66,18 @@ They can be of 5 types, and they all contain quantity and date and time:
 - Received: Coin received from user X 
 - Buy: Coin purchased
 - Cashout: Coin Withdrawn
-- Bonus: Coin Earned with bonus
+- Bonus: Coin Earned with bonusù
+
+  ![Screenshot 2024-06-12 114022](https://github.com/gerhash/wallet-django/assets/62940515/09345e57-6b7f-41d5-a7b3-52fa0f8906f0)
 
 Going down we have a dashboard that shows us the current value of the coin, with a graph (using Chart.js) that shows us its trend over time
+  ![Screenshot 2024-06-12 114030](https://github.com/gerhash/wallet-django/assets/62940515/63d29284-eed5-4c76-a14c-87ac9aeaf0b4)
 
 
 #### Account
 
+![Screenshot 2024-06-12 114039](https://github.com/gerhash/wallet-django/assets/62940515/62f68c57-22d6-453f-928a-606fa527ff75)
 In this section we have the avatar image at the top with username and other personal information
-
 If the document verification has not been carried out, there is a button that reminds us to do it.
 
 We have the wallet with the user's balance and then a screen that reminds us of the price of the coin, the invitation code and the ranking statistics and the number of people invited by us.
