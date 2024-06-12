@@ -1,8 +1,6 @@
 
 ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
-<br/>
-<br/>
 
 # CWallet
 
@@ -38,7 +36,6 @@ pip install -r requirements.txt
 ```javascript
 python manage.py runserver
 ```
-## demo
 ## v0.1 Alpha
 
 First version still under development, many functions to be implemented and the UI to be improved
@@ -80,6 +77,5 @@ If the document verification has not been carried out, there is a button that re
 
 We have the wallet with the user's balance and then a screen that reminds us of the price of the coin, the invitation code and the ranking statistics and the number of people invited by us.
 In the future it will be implemented by ensuring that rewards are obtained based on rank and people invited
-## 🛠 Skills
-HTML, CSS, JavaScript, Python, Django, MySQL, Bootstrap
+## Database Logic
 
